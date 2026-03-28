@@ -1,18 +1,26 @@
 # Hijackr
 
-Monorepo for the Hijackr platform — web, app, and API.
+Monorepo for the Hijackr platform.
 
 ## Structure
 
 ```
 hijackr/
 ├── apps/
-│   ├── api/    # Go/Gin REST API
-│   ├── app/    # SvelteKit user dashboard
-│   └── web/    # SvelteKit marketing site
+│   ├── api/    # api.hijackr.io — Go/Gin backend
+│   ├── app/    # app.hijackr.io — SvelteKit account portal
+│   └── web/    # hijackr.io — SvelteKit marketing site
 └── packages/
     └── types/  # Shared TypeScript types
 ```
+
+## Apps
+
+| App | URL | Description |
+|-----|-----|-------------|
+| `apps/api` | `api.hijackr.io` | Go/Gin backend — licence validation, Stripe webhooks, auth |
+| `apps/app` | `app.hijackr.io` | SvelteKit account portal — licences, machines, billing |
+| `apps/web` | `hijackr.io` | SvelteKit marketing site |
 
 ## Prerequisites
 
@@ -26,26 +34,18 @@ hijackr/
 # Install all JS/TS dependencies
 pnpm install
 
-# Run the dashboard (apps/app) in dev mode
+# Run the account portal in dev mode
 pnpm dev:app
 
-# Run the marketing site (apps/web) in dev mode
+# Run the marketing site in dev mode
 pnpm dev:web
 
 # Run the API
 cd apps/api && go run ./cmd/server
 ```
 
-## Apps
-
-| App | Description | Port |
-|-----|-------------|------|
-| `apps/api` | Go REST API (Gin + PostgreSQL + Stripe) | 8080 |
-| `apps/app` | SvelteKit user dashboard | 5173 |
-| `apps/web` | SvelteKit marketing site | 5174 |
-
 ## Packages
 
 | Package | Description |
 |---------|-------------|
-| `packages/types` | Shared TypeScript interfaces (User, Machine, Billing) |
+| `packages/types` | Shared TypeScript interfaces (User, Machine, Subscription, Invoice) |
